@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SayHello</string>
+
+    <string name="hello_world_english">Hello world!</string>
+    <string name="hello_world_german">Hallo Welt!</string>
+
+    <string name="button_english">Change to German</string>
+    <string name="button_german">Change to English</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
