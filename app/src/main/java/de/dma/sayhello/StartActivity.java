@@ -11,16 +11,15 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-
 public class StartActivity extends Activity implements TextToSpeech.OnInitListener {
 
-    TextToSpeech tts;
+    private TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        tts = new TextToSpeech(this, (TextToSpeech.OnInitListener) this);
+        tts = new TextToSpeech(this, this);
     }
 
     @Override
