@@ -6,6 +6,10 @@
 
     <string name="button_english">Change to German</string>
     <string name="button_german">Change to English</string>
+    <string name="edit_read_text">Please enter a text to be read</string>
+    <string name="radio_german">Read text in German</string>
+    <string name="radio_english">Read text in English</string>
+    <string name="button_read">Read text</string>
 
     <string name="action_settings">Settings</string>
 </resources>

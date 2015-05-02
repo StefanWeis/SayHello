@@ -1,25 +1,34 @@
 package de.dma.sayhello;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
 public class StartActivity extends Activity implements TextToSpeech.OnInitListener {
 
     private TextToSpeech tts;
+    private String text;
+    private boolean language = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        tts = new TextToSpeech(this, this);
     }
 
     @Override
@@ -58,9 +67,36 @@ public class StartActivity extends Activity implements TextToSpeech.OnInitListen
         }
     }
 
+    public void onReadButtonClick(View v) {
+        EditText editText = (EditText) findViewById(R.id.editText);
+
+        if (editText.getText().length() > 0)
+            text = editText.getText().toString();
+        else {
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter a text to be read first!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        tts = new TextToSpeech(this, this);
+    }
+
+    public void onRadioClick(View v) {
+        if (v.getId() == R.id.radioButton)
+            language = true;
+        else
+            language = false;
+    }
+
     @Override
     public void onInit(int status) {
-        tts.setLanguage(Locale.GERMAN);
-        tts.speak("Hallo Welt!", TextToSpeech.QUEUE_FLUSH, null, "Test");
+        if (language)
+            tts.setLanguage(Locale.GERMAN);
+        else
+            tts.setLanguage(Locale.ENGLISH);
+
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "Test");
     }
 }
