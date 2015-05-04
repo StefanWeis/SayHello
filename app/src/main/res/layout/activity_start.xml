@@ -69,6 +69,7 @@
         android:id="@+id/button2"
         android:layout_below="@+id/radioGroup"
         android:layout_centerHorizontal="true"
-        android:onClick="onReadButtonClick" />
+        android:onClick="onReadButtonClick"
+        android:background="@drawable/button_custom"/>
 
 </RelativeLayout>
